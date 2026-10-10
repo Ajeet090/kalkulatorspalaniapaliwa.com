@@ -133,7 +133,7 @@ const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/kontakt";
   <script>
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const successBanner = document.getElementById('contact-success');
-    const submitBtn = document.getElementById('btn-submit-contact');
+    const submitBtn = document.getElementById('btn-submit-contact') as HTMLButtonElement;
 
     if (form && successBanner && submitBtn) {
       form.addEventListener('submit', () => {
