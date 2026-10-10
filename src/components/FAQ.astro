@@ -1,0 +1,100 @@
+---
+const faqData = [
+  {
+    question: "Jak obliczyć spalanie paliwa na 100 km i jaki jest na to wzór?",
+    answer: "Aby obliczyć średnie spalanie paliwa na 100 km, podziel ilość zużytego paliwa w litrach przez przejechany dystans w kilometrach, a wynik pomnóż przez 100. Wzór to: Średnie spalanie (l/100 km) = (Zużyte paliwo ÷ Dystans) × 100. Przykładowo, jeśli auto zużyło 30 litrów paliwa na trasie 450 km: 30 ÷ 450 × 100 = 6,67 l/100 km."
+  },
+  {
+    question: "Ile paliwa zużywa samochód na 1 km (spalanie paliwa na kilometr)?",
+    answer: "Zużycie paliwa na 1 km oblicza się dzieląc objętość spalonego paliwa przez liczbę pokonanych kilometrów. Jeśli samochód zużył 30 litrów na dystansie 450 km, spalanie wynosi ok. 0,067 litra na kilometr (czyli 66,7 ml/km). Nasz kalkulator automatycznie przelicza zużycie na 1 km oraz wskazuje koszt przejechania każdego kilometra."
+  },
+  {
+    question: "Jak działa kalkulator spalania benzyny oraz oleju napędowego (diesel)?",
+    answer: "Kalkulator opiera się na jednakowych zasadach matematycznych zarówno dla benzyny (Pb95, Pb98, E10), jak i oleju napędowego (diesel ON) czy gazu LPG. Wybierając odpowiedni rodzaj paliwa i podając aktualną cenę za 1 litr, narzędzie wyliczy dokładne zużycie w l/100 km oraz całkowity koszt przejazdu dla Twojego silnika."
+  },
+  {
+    question: "Czy nowa benzyna E10 wpływa na zużycie paliwa w samochodzie?",
+    answer: "Benzyna E10 zawiera do 10% biokomponentów (bioetanolu), który cechuje się nieco niższą wartością opałową niż czysta benzyna. Z tego powodu średnie zużycie paliwa przy jeździe na E10 może wzrosnąć o ok. 1–2%. Przed tankowaniem upewnij się, że Twój silnik jest fabrycznie przystosowany do paliwa E10."
+  },
+  {
+    question: "Jak obliczyć spalanie gazu LPG w stosunku do benzyny?",
+    answer: "Silniki z instalacją LPG zużywają objętościowo o około 15–20% więcej litrów LPG niż benzyny (np. auto spalające 8 l benzyny zużyje ok. 9,5 l LPG). Pomimo większego zużycia litrów, znacznie niższa cena LPG powoduje, że łączny koszt przejechania 100 km spada o ponad 40%."
+  },
+  {
+    question: "Co najbardziej podnosi zużycie paliwa w trasie i w mieście?",
+    answer: "Głównymi czynnikami podnoszącymi spalanie są: zbyt niskie ciśnienie w oponach (+5%), włączona klimatyzacja (+0,5–1,5 l/100 km), gwałtowne przyspieszanie, opór powietrza z bagażnikiem dachowym (+10–15%) oraz zbędny ciężar w bagażniku."
+  },
+  {
+    question: "Czym różni się spalanie w cyklu miejskim, pozamiejskim i mieszanym?",
+    answer: "Cykl miejski obejmuje częste zatrzymywanie się, ruszanie i pracę silnika na biegu jałowym, co generuje najwyższe spalanie. Cykl pozamiejski (trasa) oznacza płynną jazdę ze stałą prędkością i niższe zużycie. Cykl mieszany to średnia ważona obu tych trybów jazdy."
+  },
+  {
+    question: "Jak przeliczyć spalanie z MPG (Miles Per Gallon) na litry na 100 km?",
+    answer: "Aby przeliczyć spalanie w autach amerykańskich na l/100 km, podziel liczbę 235,215 przez wartość MPG (np. 30 MPG = 235,215 ÷ 30 = 7,84 l/100 km). W autach z rynku brytyjskiego (UK) użyj dzielnej 282,481. Interaktywny przelicznik MPG udostępniamy w sekcji powyżej."
+  },
+  {
+    question: "Czy jazda na luzie (biegu jałowym) oszczędza paliwo?",
+    answer: "Nie. Na biegu jałowym silnik stale zużywa paliwo (ok. 0,7–1,2 l/godz.), by utrzymać obroty. Z kolei podczas jazdy na biegu bez wciśniętego gazu (hamowanie silnikiem) sterownik wtrysku całkowicie odcina dopływ paliwa (0,0 l/100 km)."
+  },
+  {
+    question: "Czy serwis oferuje dedykowaną aplikację mobilną do obliczania spalania?",
+    answer: "Serwis kalkulatorspalaniapaliwa.com działa jako lekka i nowoczesna aplikacja internetowa (Web App), w pełni dostosowana do smartfonów i tabletów. Nie musisz pobierać ani instalować aplikacji ze sklepów Google Play czy App Store – kalkulator uruchamia się natychmiast w przeglądarce mobilnej i działa bezpłatnie."
+  },
+  {
+    question: "Czym różni się nasz kalkulator od narzędzi takich jak K2 czy Calcoo?",
+    answer: "W sieci można znaleźć popularne narzędzia pomocnicze, takie jak kalkulatory K2 czy Calcoo. Nasz kalkulator spalania paliwa wyróżnia się bezobsługowym przeliczaniem w czasie rzeczywistym, wsparciem dla dwóch metod pomiaru (paliwo zużyte oraz tankowanie do pełna), modułem podziału kosztów trasy na pasażerów oraz przelicznikiem jednostek MPG."
+  },
+  {
+    question: "Jak obliczyć całkowity koszt paliwa na trasie i podzielić wydatki z pasażerami?",
+    answer: "Całkowity koszt paliwa wylicza się mnożąc ilość spalonego paliwa przez cenę za 1 litr (Koszt = Litry × Cena). Przykładowo przy 30 litrach i cenie 6,50 zł/l koszt trasy to 195,00 zł. Jeśli podróżujesz w 3 osoby, nasz kalkulator trasy podzieli tę kwotę, wskazując składkę 65,00 zł na osobę."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<section id="faq" class="py-12 sm:py-16 px-4 sm:px-6 bg-[#fafafa] border-t border-[#ebebeb]">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Baza Wiedzy i Pytania</span>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] mt-1">
+        Najczęściej zadawane pytania o kalkulator spalania paliwa
+      </h2>
+      <p class="text-sm text-[#4d4d4d] mt-2 max-w-xl mx-auto">
+        Sprawdź kompletne odpowiedzi na pytania dotyczące zużycia benzyny, Diesla, LPG, paliwa E10, przeliczników MPG oraz oszczędnego kierowania pojazdem.
+      </p>
+    </div>
+
+    <!-- Accordion Container -->
+    <div class="space-y-3">
+      {faqData.map((item) => (
+        <details class="geist-hairline-card rounded-lg bg-white border border-[#ebebeb] overflow-hidden transition-all group focus-within:ring-2 focus-within:ring-[#0070f3]">
+          <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none font-medium text-sm sm:text-base text-[#171717] hover:text-[#0070f3] focus:outline-none">
+            <span class="pr-4">{item.question}</span>
+            <span class="font-mono text-xs text-[#8f8f8f] group-open:rotate-180 transition-transform shrink-0" aria-hidden="true">
+              ▼
+            </span>
+          </summary>
+          <div class="px-4 pb-5 sm:px-5 sm:pb-5 text-xs sm:text-sm text-[#4d4d4d] leading-relaxed border-t border-[#f2f2f2] pt-3 bg-[#fafafa]">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <!-- FAQPage JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>

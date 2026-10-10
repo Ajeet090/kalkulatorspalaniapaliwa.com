@@ -1,0 +1,9 @@
+# robots.txt – kalkulatorspalaniapaliwa.com
+
+User-agent: *
+Allow: /
+Disallow: /404
+Disallow: /500
+
+# Sitemap Location
+Sitemap: https://kalkulatorspalaniapaliwa.com/sitemap.xml

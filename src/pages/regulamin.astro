@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Regulamin Serwisu – Kalkulator spalania paliwa";
+const pageDescription = "Warunki korzystania i regulamin bezpłatnego serwisu kalkulatorspalaniapaliwa.com.";
+const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/regulamin";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl}>
+  <Navbar />
+
+  <main class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="text-center space-y-3">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Dokumenty Prawne</span>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#171717]">
+          Regulamin Serwisu
+        </h1>
+        <p class="text-sm text-[#4d4d4d]">
+          Obowiązuje od dnia 10 października 2026 r.
+        </p>
+      </div>
+
+      <!-- Content Container -->
+      <div class="geist-hairline-card p-6 sm:p-10 rounded-xl bg-white space-y-6 text-sm sm:text-base leading-relaxed text-[#4d4d4d]">
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">§ 1. Postanowienia Ogólne</h2>
+          <p>
+            1. Niniejszy regulamin określa zasady korzystania z bezpłatnego serwisu internetowego udostępnianego pod adresem <strong class="text-[#171717]">https://kalkulatorspalaniapaliwa.com/</strong>.
+          </p>
+          <p>
+            2. Korzystanie z serwisu oznacza akceptację postanowień niniejszego regulaminu. Dostęp do serwisu jest bezpłatny i nie wymaga rejestracji ani podawania danych osobowych.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">§ 2. Usługi Świadczone Drogą Elektroniczną</h2>
+          <p>
+            1. Serwis udostępnia użytkownikom interaktywne kalkulatory online służące do szacowania średniego zużycia paliwa, wyliczania kosztów trasy oraz porównywania wyliczeń.
+          </p>
+          <p>
+            2. Wszelkie obliczenia wykonywane są w oparciu o standardowe wzory matematyczne oraz wartości wprowadzone bezpośrednio przez użytkownika.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">§ 3. Wyłączenie Odpowiedzialności</h2>
+          <p>
+            1. Wyniki prezentowane przez kalkulator mają charakter wyłącznie szacunkowy i informacyjny. Rzeczywiste zużycie paliwa w pojeździe zależy od wielu czynników zewnętrznych (np. techniki jazdy, ciśnienia w oponach, warunków atmosferycznych, stanu technicznego pojazdu).
+          </p>
+          <p>
+            2. Wydawca serwisu nie ponosi odpowiedzialności za jakiekolwiek decyzje finansowe, handlowe lub organizacyjne podjęte na podstawie wyników uzyskanych z narzędzi dostępnych na stronie.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">§ 4. Prawa Autorskie</h2>
+          <p>
+            1. Całość zawartości serwisu (układ strony, teksty, grafiki, kod źródłowy) podlega ochronie prawa autorskiego. Kopiowanie, rozpowszechnianie lub modyfikowanie elementów serwisu bez zgody wydawcy jest zabronione.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">§ 5. Reklamacje i Kontakt</h2>
+          <p>
+            Wszelkie uwagi dotyczące funkcjonowania serwisu oraz zgłoszenia błędów można kierować poprzez formularz na stronie <a href="/kontakt" class="text-[#0070f3] hover:underline font-medium">Kontakt</a>.
+          </p>
+        </section>
+      </div>
+
+      <!-- Navigation Link Back -->
+      <div class="text-center pt-4">
+        <a href="/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#171717] text-white text-xs font-medium hover:bg-[#333333] transition-colors">
+          ← Powrót do strony głównej
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

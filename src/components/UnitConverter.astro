@@ -1,0 +1,142 @@
+---
+---
+
+<section id="przelicznik-jednostek" class="py-12 sm:py-16 px-4 sm:px-6 bg-[#fafafa] border-t border-[#ebebeb]">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Przelicznik Jednostek</span>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] mt-1">
+        Przelicznik MPG na l/100 km oraz Mil na Kilometry
+      </h2>
+      <p class="text-sm text-[#4d4d4d] mt-2 max-w-xl mx-auto">
+        Sprowadzasz auto z USA lub Wielkiej Brytanii? Szybko przelicz spalanie w MPG (Miles Per Gallon) na litry na 100 km oraz mile na kilometry.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Converter 1: MPG to L/100km -->
+      <div class="geist-hairline-card p-5 sm:p-6 rounded-xl bg-white shadow-2xs space-y-4">
+        <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+          <span class="font-semibold text-sm text-[#171717]">Spalanie: MPG ⇆ l/100 km</span>
+          <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#171717] text-white">USA / UK</span>
+        </div>
+
+        <div>
+          <label for="input-mpg-val" class="block text-xs font-medium text-[#4d4d4d] mb-1">
+            Wartość MPG (Miles per Gallon)
+          </label>
+          <div class="relative">
+            <input 
+              type="number" 
+              id="input-mpg-val" 
+              value="30" 
+              step="0.1" 
+              min="1"
+              class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm font-mono bg-white focus:outline-none focus:border-[#0070f3]"
+            />
+            <span class="absolute right-3 top-2.5 text-xs text-[#8f8f8f]">MPG</span>
+          </div>
+        </div>
+
+        <div>
+          <label for="select-mpg-standard" class="block text-xs font-medium text-[#4d4d4d] mb-1">Standard MPG</label>
+          <select id="select-mpg-standard" class="w-full px-3 py-2 rounded-md border border-[#ebebeb] text-xs bg-white text-[#171717]">
+            <option value="us" selected>USA (US Gallon = ~3,785 L)</option>
+            <option value="uk">Wielka Brytania (Imperial Gallon = ~4,546 L)</option>
+          </select>
+        </div>
+
+        <div class="pt-3 border-t border-[#ebebeb] bg-[#fafafa] p-3 rounded-md">
+          <span class="text-xs text-[#8f8f8f] block">Przeliczone spalanie w Europie:</span>
+          <div class="flex items-baseline gap-1 mt-0.5">
+            <span id="res-mpg-converted" class="text-2xl font-bold font-mono text-[#171717]">7,84</span>
+            <span class="text-xs font-medium text-[#4d4d4d]">l / 100 km</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Converter 2: Miles to Kilometres -->
+      <div class="geist-hairline-card p-5 sm:p-6 rounded-xl bg-white shadow-2xs space-y-4">
+        <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3">
+          <span class="font-semibold text-sm text-[#171717]">Dystans: Mile ⇆ Kilometry</span>
+          <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#0070f3] text-white">Mile / km</span>
+        </div>
+
+        <div>
+          <label for="input-miles-val" class="block text-xs font-medium text-[#4d4d4d] mb-1">
+            Odległość w milach (mi)
+          </label>
+          <div class="relative">
+            <input 
+              type="number" 
+              id="input-miles-val" 
+              value="62.1" 
+              step="0.1" 
+              min="0.1"
+              class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm font-mono bg-white focus:outline-none focus:border-[#0070f3]"
+            />
+            <span class="absolute right-3 top-2.5 text-xs text-[#8f8f8f]">mi</span>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-[#ebebeb] bg-[#fafafa] p-3 rounded-md">
+          <span class="text-xs text-[#8f8f8f] block">Przeliczony dystans w km:</span>
+          <div class="flex items-baseline gap-1 mt-0.5">
+            <span id="res-miles-converted" class="text-2xl font-bold font-mono text-[#171717]">100,00</span>
+            <span class="text-xs font-medium text-[#4d4d4d]">km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const inputMpg = document.getElementById('input-mpg-val') as HTMLInputElement;
+  const selectMpgStd = document.getElementById('select-mpg-standard') as HTMLSelectElement;
+  const resMpg = document.getElementById('res-mpg-converted');
+
+  const inputMiles = document.getElementById('input-miles-val') as HTMLInputElement;
+  const resMiles = document.getElementById('res-miles-converted');
+
+  function formatPL(num: number, decimals: number = 2): string {
+    return num.toFixed(decimals).replace('.', ',');
+  }
+
+  function updateMpg() {
+    const mpg = parseFloat(inputMpg.value) || 0;
+    const isUk = selectMpgStd.value === 'uk';
+    if (mpg <= 0) {
+      if (resMpg) resMpg.textContent = '—';
+      return;
+    }
+    // US MPG formula: 235.215 / MPG
+    // UK Imperial MPG formula: 282.481 / MPG
+    const factor = isUk ? 282.481 : 235.215;
+    const l100 = factor / mpg;
+    if (resMpg) resMpg.textContent = formatPL(l100, 2);
+  }
+
+  function updateMiles() {
+    const miles = parseFloat(inputMiles.value) || 0;
+    if (miles <= 0) {
+      if (resMiles) resMiles.textContent = '—';
+      return;
+    }
+    // 1 mile = 1.609344 km
+    const km = miles * 1.609344;
+    if (resMiles) resMiles.textContent = formatPL(km, 2);
+  }
+
+  if (inputMpg && selectMpgStd) {
+    inputMpg.addEventListener('input', updateMpg);
+    selectMpgStd.addEventListener('change', updateMpg);
+    updateMpg();
+  }
+
+  if (inputMiles) {
+    inputMiles.addEventListener('input', updateMiles);
+    updateMiles();
+  }
+</script>

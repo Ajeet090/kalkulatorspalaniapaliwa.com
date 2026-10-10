@@ -1,0 +1,120 @@
+---
+---
+
+<header class="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-md border-b border-[#ebebeb]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#0070f3] rounded-md p-1">
+      <div class="w-8 h-8 rounded-full bg-[#171717] flex items-center justify-center text-white font-mono text-sm font-bold shadow-xs transition-transform group-hover:scale-105">
+        ⛽
+      </div>
+      <div class="flex flex-col">
+        <span class="font-semibold text-[#171717] text-base leading-tight tracking-tight">Kalkulator Spalania</span>
+        <span class="text-[11px] font-mono text-[#8f8f8f] uppercase tracking-wider">kalkulatorspalaniapaliwa.com</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav aria-label="Nawigacja główna" class="hidden md:flex items-center gap-1 bg-[#ffffff] border border-[#ebebeb] p-1 rounded-full text-xs sm:text-sm">
+      <a href="/#kalkulator-glowny" class="px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        Spalanie
+      </a>
+      <a href="/#kalkulator-kosztu-trasy" class="px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        Koszt trasy
+      </a>
+      <a href="/#porownywarka-paliw" class="px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        Porównywarka
+      </a>
+      <a href="/#przelicznik-jednostek" class="px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        Przelicznik MPG
+      </a>
+      <a href="/o-nas" class="nav-page-link px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        O nas
+      </a>
+      <a href="/kontakt" class="nav-page-link px-3 py-1.5 rounded-full text-[#4d4d4d] hover:text-[#171717] hover:bg-[#f2f2f2] font-medium transition-colors">
+        Kontakt
+      </a>
+    </nav>
+
+    <!-- Quick CTA Button -->
+    <div class="flex items-center gap-3">
+      <a href="/#kalkulator-glowny" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#171717] text-white text-xs sm:text-sm font-medium hover:bg-[#333333] transition-colors shadow-xs">
+        Oblicz teraz
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-toggle"
+        type="button"
+        aria-label="Otwórz menu nawigacji"
+        aria-expanded="false"
+        class="md:hidden p-2 rounded-md border border-[#ebebeb] bg-white text-[#171717] hover:bg-[#f2f2f2] focus:outline-none focus:ring-2 focus:ring-[#0070f3]"
+      >
+        <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-b border-[#ebebeb] bg-white px-4 pt-2 pb-4 space-y-2 text-sm shadow-md">
+    <a href="/#kalkulator-glowny" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      Średnie spalanie (100 km)
+    </a>
+    <a href="/#kalkulator-kosztu-trasy" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      Kalkulator kosztu trasy
+    </a>
+    <a href="/#porownywarka-paliw" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      Porównywarka pojazdów
+    </a>
+    <a href="/#przelicznik-jednostek" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      Przelicznik MPG na l/100km
+    </a>
+    <a href="/o-nas" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      O nas
+    </a>
+    <a href="/kontakt" class="mobile-nav-link block px-3 py-2 rounded-md text-[#171717] hover:bg-[#fafafa] font-medium">
+      Kontakt
+    </a>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (toggleBtn && menu && iconOpen && iconClose) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Highlight active page link for /o-nas, /kontakt, etc.
+  const currentPath = window.location.pathname;
+  document.querySelectorAll<HTMLAnchorElement>('.nav-page-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('bg-[#f2f2f2]', 'text-[#171717]');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+</script>

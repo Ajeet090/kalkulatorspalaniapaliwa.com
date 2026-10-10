@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import MainCalculator from '../components/MainCalculator.astro';
+import TripCostCalculator from '../components/TripCostCalculator.astro';
+import FuelComparator from '../components/FuelComparator.astro';
+import UnitConverter from '../components/UnitConverter.astro';
+import ExplanatoryContent from '../components/ExplanatoryContent.astro';
+import SeoArticle from '../components/SeoArticle.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageTitle = "Kalkulator spalania paliwa – Oblicz zużycie na 100 km i koszt trasy";
+const pageDescription = "Oblicz spalanie paliwa w samochodzie i sprawdź, ile kosztuje Twoja podróż. Nasz darmowy kalkulator spalania paliwa online pozwala szybko obliczyć średnie zużycie na 100 km, koszt przejechanej trasy oraz wydatki na benzynę (Pb95/E10), diesel (ON) lub LPG. Przeliczaj MPG na l/100 km i dziel koszty paliwa ze współpasażerami.";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={pageTitle} description={pageDescription}>
+  <Navbar />
+  <main>
+    <Hero />
+    <MainCalculator />
+    <TripCostCalculator />
+    <FuelComparator />
+    <UnitConverter />
+    <ExplanatoryContent />
+    <SeoArticle />
+    <FAQ />
+  </main>
+  <Footer />
 </Layout>

@@ -1,0 +1,177 @@
+---
+---
+
+<section id="poradnik-i-wzory" class="py-12 sm:py-16 px-4 sm:px-6 bg-[#fafafa] border-t border-[#ebebeb]">
+  <div class="max-w-4xl mx-auto space-y-12">
+    
+    <!-- Section 1: Mathematical Formulas -->
+    <div>
+      <div class="text-center mb-6">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Formuły matematyczne</span>
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] mt-1">
+          Jak oblicza się spalanie paliwa?
+        </h2>
+        <p class="text-sm text-[#4d4d4d] mt-1">
+          Poniżej przedstawiamy dokładne wzory stosowane przez nasz kalkulator online.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Formula 1 -->
+        <div class="geist-hairline-card p-5 rounded-lg bg-white">
+          <span class="text-xs font-mono font-medium text-[#0070f3] uppercase tracking-wider block mb-2">
+            1. Wzór na średnie spalanie (l/100 km)
+          </span>
+          <div class="bg-[#fafafa] border border-[#ebebeb] p-3 rounded font-mono text-xs sm:text-sm text-[#171717] my-3">
+            Spalanie = (Ilość paliwa ÷ Dystans) × 100
+          </div>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            <strong>Przykład:</strong> Jeśli zużyłeś 36 litrów paliwa na trasie 450 km, to:<br />
+            <code>(36 ÷ 450) × 100 = 8,0 l/100 km</code>
+          </p>
+        </div>
+
+        <!-- Formula 2 -->
+        <div class="geist-hairline-card p-5 rounded-lg bg-white">
+          <span class="text-xs font-mono font-medium text-[#0070f3] uppercase tracking-wider block mb-2">
+            2. Wzór na koszt przejechanej trasy (zł)
+          </span>
+          <div class="bg-[#fafafa] border border-[#ebebeb] p-3 rounded font-mono text-xs sm:text-sm text-[#171717] my-3">
+            Koszt trasy = Ilość paliwa × Cena za litr
+          </div>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            <strong>Przykład:</strong> Przy zużyciu 36 litrów i cenie paliwa 6,50 zł/l:<br />
+            <code>36 × 6,50 zł = 234,00 zł</code>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Reference Table for Average Consumption -->
+    <div>
+      <div class="text-center mb-6">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Tabela odniesienia</span>
+        <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#171717] mt-1">
+          Ile wynosi średnie spalanie w zależności od typu auta?
+        </h3>
+        <p class="text-sm text-[#4d4d4d] mt-1">
+          Orientacyjne wartości zużycia paliwa na 100 km w cyklu mieszanym.
+        </p>
+      </div>
+
+      <div class="geist-hairline-card rounded-lg overflow-hidden bg-white">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm text-[#171717]">
+            <thead class="bg-[#fafafa] border-b border-[#ebebeb] font-mono uppercase text-[11px] text-[#8f8f8f]">
+              <tr>
+                <th class="py-3 px-4">Typ pojazdu</th>
+                <th class="py-3 px-4">Benzyna (Pb)</th>
+                <th class="py-3 px-4">Diesel (ON)</th>
+                <th class="py-3 px-4">Autogaz (LPG)</th>
+                <th class="py-3 px-4">Uwagi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#ebebeb]">
+              <tr class="hover:bg-[#fafafa]">
+                <td class="py-3 px-4 font-medium">Auto miejskie (np. Yaris, Polo)</td>
+                <td class="py-3 px-4 font-mono">5,0 - 6,5 l</td>
+                <td class="py-3 px-4 font-mono">4,0 - 4,8 l</td>
+                <td class="py-3 px-4 font-mono">6,5 - 8,0 l</td>
+                <td class="py-3 px-4 text-[#8f8f8f] text-xs">Niskie spalanie w mieście</td>
+              </tr>
+              <tr class="hover:bg-[#fafafa]">
+                <td class="py-3 px-4 font-medium">Kompakt (np. Golf, Focus, Astra)</td>
+                <td class="py-3 px-4 font-mono">6,2 - 7,8 l</td>
+                <td class="py-3 px-4 font-mono">4,8 - 5,8 l</td>
+                <td class="py-3 px-4 font-mono">8,0 - 10,0 l</td>
+                <td class="py-3 px-4 text-[#8f8f8f] text-xs">Uniwersalne auto rodzinne</td>
+              </tr>
+              <tr class="hover:bg-[#fafafa]">
+                <td class="py-3 px-4 font-medium">SUV / Crossover (np. Sportage, RAV4)</td>
+                <td class="py-3 px-4 font-mono">7,5 - 9,5 l</td>
+                <td class="py-3 px-4 font-mono">5,8 - 7,2 l</td>
+                <td class="py-3 px-4 font-mono">9,5 - 12,0 l</td>
+                <td class="py-3 px-4 text-[#8f8f8f] text-xs">Większy opór powietrza</td>
+              </tr>
+              <tr class="hover:bg-[#fafafa]">
+                <td class="py-3 px-4 font-medium">Hybryda Klasyczna (HEV)</td>
+                <td class="py-3 px-4 font-mono">3,8 - 5,0 l</td>
+                <td class="py-3 px-4 font-mono">—</td>
+                <td class="py-3 px-4 font-mono">5,0 - 6,5 l</td>
+                <td class="py-3 px-4 text-[#8f8f8f] text-xs">Brak zużycia podczas hamowania</td>
+              </tr>
+              <tr class="hover:bg-[#fafafa]">
+                <td class="py-3 px-4 font-medium">Auto dostawcze (np. Ducato, Sprinter)</td>
+                <td class="py-3 px-4 font-mono">9,0 - 12,0 l</td>
+                <td class="py-3 px-4 font-mono">7,5 - 10,5 l</td>
+                <td class="py-3 px-4 font-mono">11,0 - 14,0 l</td>
+                <td class="py-3 px-4 text-[#8f8f8f] text-xs">Zależy od obciążenia cargo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Eco-driving Tips -->
+    <div>
+      <div class="text-center mb-6">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Eko-jazda</span>
+        <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-[#171717] mt-1">
+          Jak obniżyć spalanie paliwa o 15–20%?
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">🎈</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Prawidłowe ciśnienie w oponach</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Spadek ciśnienia o zaledwie 0,5 bara zwiększa opory toczenia i podnosi zużycie paliwa o nawet 5%.
+          </p>
+        </div>
+
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">⚙️</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Płynna zmiana biegów</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Zmieniaj bieg na wyższy przy około 2000 obr./min (Diesel) lub 2200 obr./min (Benzyna), unikaj wysokich obrotów.
+          </p>
+        </div>
+
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">🛑</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Hamowanie silnikiem</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Puszczając pedał gazu na biegu, współczesne silniki odcinają dopływ paliwa całkowicie (0,0 l/100 km).
+          </p>
+        </div>
+
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">❄️</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Rozsądne korzystanie z klimatyzacji</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Włączona klimatyzacja zwiększa spalanie o 0,5–1,5 l/100 km. Przy wyższych prędkościach używaj klimy zamiast otwartych szyb.
+          </p>
+        </div>
+
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">📦</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Redukcja zbędnego ciężaru</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Nie woź zbędnych rzeczy w bagażniku. Dodatkowe 50 kg podnosi spalanie o około 0,2 l/100 km. Zdejmuj bagażnik dachowy.
+          </p>
+        </div>
+
+        <div class="geist-hairline-card p-4 rounded-lg bg-white">
+          <div class="text-xl mb-2">🛣️</div>
+          <h4 class="font-semibold text-sm text-[#171717] mb-1">Utrzymywanie stałej prędkości</h4>
+          <p class="text-xs text-[#4d4d4d] leading-relaxed">
+            Używaj tempomatu na autostradzie. Jazda z prędkością 110-120 km/h spala znacznie mniej paliwa niż ciągłe przyspieszanie do 140 km/h.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

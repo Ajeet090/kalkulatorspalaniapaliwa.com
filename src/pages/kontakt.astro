@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Kontakt – Kalkulator spalania paliwa";
+const pageDescription = "Masz pytanie, sugestię lub chcesz zgłosić pomysł nowej funkcji? Skontaktuj się z zespołem serwisu kalkulatorspalaniapaliwa.com.";
+const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/kontakt";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl}>
+  <Navbar />
+
+  <main class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="text-center space-y-3">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Napisz do nas</span>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#171717]">
+          Skontaktuj się z nami
+        </h1>
+        <p class="text-sm text-[#4d4d4d] max-w-xl mx-auto">
+          Masz pytanie dotyczące działania kalkulatora, sugestię ulepszenia lub chcesz zgłosić błąd? Jesteśmy do Twojej dyspozycji.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Contact Info Box -->
+        <div class="geist-hairline-card p-6 rounded-xl bg-white space-y-4 md:col-span-1 border border-[#ebebeb]">
+          <h2 class="font-semibold text-base text-[#171717] border-b border-[#ebebeb] pb-2">
+            Dane Kontaktowe
+          </h2>
+          
+          <div class="space-y-3 text-xs text-[#4d4d4d]">
+            <div>
+              <span class="font-mono text-[10px] uppercase text-[#8f8f8f] block">Pomoc i pytania:</span>
+              <span class="font-medium text-[#171717] block mt-0.5">kontakt@kalkulatorspalaniapaliwa.com</span>
+            </div>
+
+            <div>
+              <span class="font-mono text-[10px] uppercase text-[#8f8f8f] block">Czas odpowiedzi:</span>
+              <span class="text-[#171717] block mt-0.5">Do 24 godzin w dni robocze</span>
+            </div>
+
+            <div>
+              <span class="font-mono text-[10px] uppercase text-[#8f8f8f] block">Lokalizacja serwera:</span>
+              <span class="text-[#171717] block mt-0.5">Warszawa, Polska (EU)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="geist-hairline-card p-6 sm:p-8 rounded-xl bg-white md:col-span-2 border border-[#ebebeb]">
+          <form id="contact-form" onsubmit="event.preventDefault();" class="space-y-4">
+            <!-- Name -->
+            <div>
+              <label for="contact-name" class="block text-xs font-semibold text-[#171717] mb-1">
+                Twoje Imię / Nick
+              </label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                name="name"
+                required 
+                autocomplete="name"
+                placeholder="np. Jan Kowalski"
+                class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] bg-white"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="contact-email" class="block text-xs font-semibold text-[#171717] mb-1">
+                Adres e-mail
+              </label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                name="email"
+                required 
+                autocomplete="email"
+                placeholder="np. jan@example.pl"
+                class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] bg-white"
+              />
+            </div>
+
+            <!-- Topic -->
+            <div>
+              <label for="contact-topic" class="block text-xs font-semibold text-[#171717] mb-1">
+                Temat wiadomości
+              </label>
+              <select id="contact-topic" class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] bg-white">
+                <option value="general">Pytanie ogólne</option>
+                <option value="feature">Sugestia nowej funkcji</option>
+                <option value="bug">Zgłoszenie błędu</option>
+                <option value="coop">Współpraca</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="contact-message" class="block text-xs font-semibold text-[#171717] mb-1">
+                Treść wiadomości
+              </label>
+              <textarea 
+                id="contact-message" 
+                rows="4" 
+                required 
+                placeholder="Wpisz treść swojej wiadomości..."
+                class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] bg-white resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              id="btn-submit-contact"
+              type="submit" 
+              class="w-full py-3 rounded-full bg-[#171717] text-white text-xs font-medium hover:bg-[#333333] focus:outline-none focus:ring-2 focus:ring-[#0070f3] transition-colors"
+            >
+              Wyślij wiadomość
+            </button>
+
+            <!-- Success Banner (Hidden by default) -->
+            <div id="contact-success" class="hidden p-4 rounded-md bg-[#d3e5ff]/40 border border-[#0070f3] text-xs text-[#0761d1] text-center font-medium">
+              ✓ Dziękujemy! Twoja wiadomość została wysłana pomyślnie. Odpowiemy najszybciej jak to możliwe.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const successBanner = document.getElementById('contact-success');
+    const submitBtn = document.getElementById('btn-submit-contact');
+
+    if (form && successBanner && submitBtn) {
+      form.addEventListener('submit', () => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wysyłanie...';
+        
+        setTimeout(() => {
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Wyślij wiadomość';
+          successBanner.classList.remove('hidden');
+          setTimeout(() => {
+            successBanner.classList.add('hidden');
+          }, 5000);
+        }, 800);
+      });
+    }
+  </script>
+
+  <Footer />
+</Layout>

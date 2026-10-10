@@ -1,0 +1,176 @@
+---
+---
+
+<section id="porownywarka-paliw" class="py-12 sm:py-16 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-8">
+      <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Porównywarka i Oszczędności</span>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] mt-1">
+        Porównaj 2 pojazdy lub rodzaje paliwa
+      </h2>
+      <p class="text-sm text-[#4d4d4d] mt-2 max-w-xl mx-auto">
+        Sprawdź, ile oszczędzasz wybierając oszczędniejsze auto lub instalację LPG. Porównaj roczny koszt paliwa.
+      </p>
+    </div>
+
+    <div class="geist-hairline-card rounded-xl p-5 sm:p-8 bg-white shadow-2xs">
+      <form id="comparator-form" onsubmit="event.preventDefault();">
+        <!-- Annual Distance Input -->
+        <div class="mb-6 p-4 rounded-lg bg-[#fafafa] border border-[#ebebeb] max-w-md mx-auto">
+          <label for="comp-annual-dist" class="block text-xs font-semibold text-[#171717] text-center mb-1">
+            Roczny przebieg samochodu (km / rok)
+          </label>
+          <div class="relative max-w-xs mx-auto">
+            <input 
+              type="number" 
+              id="comp-annual-dist" 
+              value="15000" 
+              min="100" 
+              step="500"
+              class="w-full px-3.5 py-2 rounded-md border border-[#ebebeb] text-[#171717] text-sm text-center font-mono focus:outline-none focus:border-[#0070f3] bg-white"
+            />
+            <span class="absolute right-3 top-2 text-xs text-[#8f8f8f]">km/rok</span>
+          </div>
+        </div>
+
+        <!-- Side-by-side comparison columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Option A -->
+          <div class="border border-[#ebebeb] rounded-lg p-5 bg-[#fafafa] space-y-4">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-2">
+              <span class="font-semibold text-sm text-[#171717]">Pojazd / Paliwo A</span>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#171717] text-white">Benzyna</span>
+            </div>
+
+            <div>
+              <label for="comp-avg-a" class="block text-xs text-[#4d4d4d] mb-1">Średnie spalanie A (l/100 km)</label>
+              <input type="number" id="comp-avg-a" value="8.0" step="0.1" class="w-full px-3 py-2 rounded border border-[#ebebeb] text-sm bg-white font-mono" />
+            </div>
+
+            <div>
+              <label for="comp-price-a" class="block text-xs text-[#4d4d4d] mb-1">Cena paliwa A (zł/l)</label>
+              <input type="number" id="comp-price-a" value="6.50" step="0.01" class="w-full px-3 py-2 rounded border border-[#ebebeb] text-sm bg-white font-mono" />
+            </div>
+
+            <div class="pt-3 border-t border-[#ebebeb] text-xs space-y-1">
+              <div class="flex justify-between text-[#4d4d4d]">
+                <span>Koszt 100 km (A):</span>
+                <span id="res-cost100-a" class="font-semibold text-[#171717] font-mono">52,00 zł</span>
+              </div>
+              <div class="flex justify-between text-[#4d4d4d]">
+                <span>Roczny koszt (A):</span>
+                <span id="res-annual-a" class="font-bold text-[#171717] font-mono text-sm">7 800,00 zł</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option B -->
+          <div class="border border-[#0070f3] rounded-lg p-5 bg-white space-y-4 shadow-xs">
+            <div class="flex items-center justify-between border-b border-[#ebebeb] pb-2">
+              <span class="font-semibold text-sm text-[#0070f3]">Pojazd / Paliwo B</span>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#0070f3] text-white">LPG / Oszczędniejszy</span>
+            </div>
+
+            <div>
+              <label for="comp-avg-b" class="block text-xs text-[#4d4d4d] mb-1">Średnie spalanie B (l/100 km)</label>
+              <input type="number" id="comp-avg-b" value="10.0" step="0.1" class="w-full px-3 py-2 rounded border border-[#ebebeb] text-sm bg-white font-mono" />
+            </div>
+
+            <div>
+              <label for="comp-price-b" class="block text-xs text-[#4d4d4d] mb-1">Cena paliwa B (zł/l)</label>
+              <input type="number" id="comp-price-b" value="2.90" step="0.01" class="w-full px-3 py-2 rounded border border-[#ebebeb] text-sm bg-white font-mono" />
+            </div>
+
+            <div class="pt-3 border-t border-[#ebebeb] text-xs space-y-1">
+              <div class="flex justify-between text-[#4d4d4d]">
+                <span>Koszt 100 km (B):</span>
+                <span id="res-cost100-b" class="font-semibold text-[#171717] font-mono">29,00 zł</span>
+              </div>
+              <div class="flex justify-between text-[#4d4d4d]">
+                <span>Roczny koszt (B):</span>
+                <span id="res-annual-b" class="font-bold text-[#0070f3] font-mono text-sm">4 350,00 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Oszczędność Summary Banner -->
+        <div class="mt-6 p-4 rounded-lg bg-[#171717] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span class="font-mono text-xs text-[#8f8f8f] uppercase tracking-wider block">Różnica finansowa</span>
+            <span class="text-sm font-medium text-white">Roczna oszczędność przy wyborze Opcji B:</span>
+          </div>
+          <div class="text-right">
+            <span id="res-diff-annual" class="text-2xl sm:text-3xl font-bold font-mono text-[#50e3c2] block">
+              + 3 450,00 zł / rok
+            </span>
+            <span id="res-diff-100km" class="text-xs text-[#8f8f8f] font-mono block">
+              (Oszczędzasz 23,00 zł na każde 100 km)
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const annualDistIn = document.getElementById('comp-annual-dist') as HTMLInputElement;
+  const avgAIn = document.getElementById('comp-avg-a') as HTMLInputElement;
+  const priceAIn = document.getElementById('comp-price-a') as HTMLInputElement;
+
+  const avgBIn = document.getElementById('comp-avg-b') as HTMLInputElement;
+  const priceBIn = document.getElementById('comp-price-b') as HTMLInputElement;
+
+  const cost100A = document.getElementById('res-cost100-a');
+  const annualA = document.getElementById('res-annual-a');
+
+  const cost100B = document.getElementById('res-cost100-b');
+  const annualB = document.getElementById('res-annual-b');
+
+  const diffAnnual = document.getElementById('res-diff-annual');
+  const diff100km = document.getElementById('res-diff-100km');
+
+  function formatPL(num: number, decimals: number = 2): string {
+    return num.toLocaleString('pl-PL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+
+  function updateComparator() {
+    const annualDist = parseFloat(annualDistIn.value) || 0;
+    const avgA = parseFloat(avgAIn.value) || 0;
+    const priceA = parseFloat(priceAIn.value) || 0;
+
+    const avgB = parseFloat(avgBIn.value) || 0;
+    const priceB = parseFloat(priceBIn.value) || 0;
+
+    const cost100AVal = (avgA * priceA);
+    const annualAVal = (cost100AVal / 100) * annualDist;
+
+    const cost100BVal = (avgB * priceB);
+    const annualBVal = (cost100BVal / 100) * annualDist;
+
+    const diff100Val = cost100AVal - cost100BVal;
+    const diffAnnVal = annualAVal - annualBVal;
+
+    if (cost100A) cost100A.textContent = `${formatPL(cost100AVal, 2)} zł`;
+    if (annualA) annualA.textContent = `${formatPL(annualAVal, 2)} zł`;
+
+    if (cost100B) cost100B.textContent = `${formatPL(cost100BVal, 2)} zł`;
+    if (annualB) annualB.textContent = `${formatPL(annualBVal, 2)} zł`;
+
+    if (diffAnnVal >= 0) {
+      if (diffAnnual) diffAnnual.textContent = `+ ${formatPL(diffAnnVal, 2)} zł / rok`;
+      if (diff100km) diff100km.textContent = `(Oszczędzasz ${formatPL(diff100Val, 2)} zł na każde 100 km)`;
+    } else {
+      if (diffAnnual) diffAnnual.textContent = `- ${formatPL(Math.abs(diffAnnVal), 2)} zł / rok`;
+      if (diff100km) diff100km.textContent = `(Opcja B jest droższa o ${formatPL(Math.abs(diff100Val), 2)} zł na 100 km)`;
+    }
+  }
+
+  [annualDistIn, avgAIn, priceAIn, avgBIn, priceBIn].forEach(input => {
+    if (input) input.addEventListener('input', updateComparator);
+  });
+
+  updateComparator();
+</script>

@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Polityka Prywatności – Kalkulator spalania paliwa";
+const pageDescription = "Informacje o zasadach ochrony prywatności, plikach cookies oraz przetwarzaniu danych w serwisie kalkulatorspalaniapaliwa.com.";
+const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/polityka-prywatnosci";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl}>
+  <Navbar />
+  
+  <main class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Page Header -->
+      <div class="text-center space-y-3">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Dokumenty Prawne</span>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#171717]">
+          Polityka Prywatności
+        </h1>
+        <p class="text-sm text-[#4d4d4d]">
+          Ostatnia aktualizacja: 10 października 2026 r.
+        </p>
+      </div>
+
+      <!-- Content Box -->
+      <div class="geist-hairline-card p-6 sm:p-10 rounded-xl bg-white space-y-6 text-sm sm:text-base leading-relaxed text-[#4d4d4d]">
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">1. Informacje Ogólne</h2>
+          <p>
+            Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych użytkowników korzystających z serwisu internetowego <strong class="text-[#171717]">kalkulatorspalaniapaliwa.com</strong>.
+          </p>
+          <p>
+            Szanujemy prywatność naszych użytkowników. Wszystkie kalkulacje zużycia paliwa oraz przeliczenia kosztów trasy są wykonywane w 100% lokalnie w przeglądarce internetowej użytkownika. Serwis nie wymaga zakładania konta, podawania nazwiska, adresu e-mail ani numeru rejestracyjnego pojazdu.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">2. Administrator Danych</h2>
+          <p>
+            Administratorem serwisu jest wydawca serwisu kalkulatorspalaniapaliwa.com. W sprawach związanych z funkcjonowaniem strony oraz ochroną prywatności możesz skontaktować się poprzez formularz na stronie <a href="/kontakt" class="text-[#0070f3] hover:underline font-medium">Kontakt</a>.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">3. Logi Serwera i Dane Techniczne</h2>
+          <p>
+            Podczas korzystania z serwisu serwer sieciowy automatycznie zapisuje standardowe protokoły techniczne (tzw. logi serwera), obejmujące m.in.: adres IP urządzenia, typ przeglądarki, system operacyjny, czas zapytania oraz adres URL strony odsyłającej. Dane te są wykorzystywane wyłącznie w celach administracyjnych oraz w celu zapewnienia stabilności i bezpieczeństwa serwisu.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">4. Pliki Cookies (Ciasteczka)</h2>
+          <p>
+            Serwis kalkulatorspalaniapaliwa.com może wykorzystywać pliki cookies (niewielkie pliki tekstowe zapisywane na urządzeniu końcowym użytkownika) w celu:
+          </p>
+          <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+            <li>Zapamiętania preferencji użytkownika (np. domyślnie wybranego rodzaju paliwa lub jednostki).</li>
+            <li>Zapewnienia prawidłowego działania elementów interfejsu.</li>
+            <li>Analizy statystycznej ruchu (anonimowe statystyki odwiedzin).</li>
+          </ul>
+          <p>
+            Użytkownik może w każdej chwili zmienić ustawienia dotyczące plików cookies w swojej przeglądarce internetowej lub całkowicie je zablokować.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">5. Prawa Użytkownika</h2>
+          <p>
+            Zgodnie z przepisami RODO (Ogólnego Rozporządzenia o Ochronie Danych), każdemu użytkownikowi przysługuje prawo do dostępu do swoich danych, ich sprostowania, usunięcia oraz ograniczenia przetwarzania, o ile dane te są gromadzone.
+          </p>
+        </section>
+
+        <section class="space-y-2">
+          <h2 class="text-lg font-semibold text-[#171717] tracking-tight">6. Zmiany w Polityce Prywatności</h2>
+          <p>
+            Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności. Aktualna wersja dokumentu jest zawsze dostępna pod adresem <code>https://kalkulatorspalaniapaliwa.com/polityka-prywatnosci</code>.
+          </p>
+        </section>
+      </div>
+
+      <!-- Navigation Link Back -->
+      <div class="text-center pt-4">
+        <a href="/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#171717] text-white text-xs font-medium hover:bg-[#333333] transition-colors">
+          ← Powrót do kalkulatora główny
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

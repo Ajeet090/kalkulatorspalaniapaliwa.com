@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "500 – Błąd serwera | Kalkulator spalania paliwa";
+const pageDescription = "Przepraszamy, wystąpił nieoczekiwany błąd serwera. Spróbuj odświeżyć stronę lub wróć do kalkulatora głównego.";
+const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/500";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} noindex={true}>
+  <Navbar />
+
+  <main class="min-h-[70vh] flex items-center justify-center py-16 px-4 sm:px-6 geist-mesh-bg">
+    <div class="max-w-md w-full geist-hairline-card p-8 sm:p-10 rounded-2xl bg-white text-center space-y-6 shadow-md border border-[#ebebeb]">
+      <div class="w-16 h-16 rounded-full bg-[#ffefcf] border border-[#f5a623] flex items-center justify-center text-2xl mx-auto font-mono text-[#ab570a]">
+        500
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
+          Błąd serwera (500)
+        </h1>
+        <p class="text-xs sm:text-sm text-[#4d4d4d] leading-relaxed">
+          Przepraszamy, wystąpił chwilowy błąd podczas przetwarzania zapytania. Spróbuj odświeżyć stronę.
+        </p>
+      </div>
+
+      <div class="pt-2 flex flex-col gap-2">
+        <a href="/" class="w-full py-2.5 px-4 rounded-full bg-[#171717] text-white text-xs font-medium hover:bg-[#333333] transition-colors shadow-2xs">
+          Wróć do Kalkulatora Spalania
+        </a>
+        <button onclick="window.location.reload();" class="w-full py-2.5 px-4 rounded-full bg-white border border-[#ebebeb] text-[#4d4d4d] hover:text-[#171717] text-xs font-medium hover:bg-[#fafafa] transition-colors cursor-pointer">
+          Odśwież stronę
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

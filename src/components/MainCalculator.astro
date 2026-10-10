@@ -1,0 +1,412 @@
+---
+---
+
+<section id="kalkulator-glowny" class="py-12 sm:py-16 px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Główny Kalkulator</span>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] mt-1">
+        Oblicz średnie spalanie i koszt przejazdu
+      </h2>
+      <p class="text-sm text-[#4d4d4d] mt-2">
+        Wybierz metodę obliczeń i wprowadź dane swojego przejazdu.
+      </p>
+    </div>
+
+    <!-- Main Card Container -->
+    <div class="geist-hairline-card rounded-xl p-5 sm:p-8 bg-white">
+      <!-- Method Selector Tabs (Geist style category pills) -->
+      <div class="flex flex-col sm:flex-row gap-2 p-1 bg-[#f2f2f2] rounded-lg mb-8" role="tablist" aria-label="Wybór metody obliczeń">
+        <button 
+          id="tab-method-1"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-method-1"
+          class="calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all bg-white text-[#171717] shadow-2xs"
+        >
+          1. Na podstawie zużytego paliwa
+        </button>
+        <button 
+          id="tab-method-2"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-method-2"
+          class="calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all text-[#4d4d4d] hover:text-[#171717]"
+        >
+          2. Metoda tankowania do pełna
+        </button>
+      </div>
+
+      <!-- Tab 1 Explanation -->
+      <div id="method-1-info" class="mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
+        <strong class="text-[#171717]">Metoda standardowa:</strong> Oblicz zużycie paliwa na podstawie podanego dystansu oraz całkowitej ilości spalonego paliwa.
+      </div>
+
+      <!-- Tab 2 Explanation (Hidden by default) -->
+      <div id="method-2-info" class="hidden mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
+        <strong class="text-[#171717]">Metoda tankowania do pełna (Najdokładniejsza):</strong> Zatankuj do pełna, wyzeruj licznik. Po przejechaniu trasy ponów tankowanie do pełna. Wpisz dystans z licznika i litry z dystrybutora.
+      </div>
+
+      <form id="fuel-calc-form" onsubmit="event.preventDefault();">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Inputs Column -->
+          <div class="space-y-4">
+            <!-- Input 1: Fuel Type -->
+            <div>
+              <label for="fuel-type" class="block font-mono text-xs uppercase tracking-wider text-[#8f8f8f] mb-1.5">
+                Rodzaj paliwa
+              </label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="cursor-pointer border border-[#ebebeb] rounded-md p-2.5 text-center transition-all bg-white hover:border-[#171717] has-[:checked]:border-[#0070f3] has-[:checked]:bg-[#d3e5ff]/20">
+                  <input type="radio" name="fuelType" value="pb" checked class="sr-only" />
+                  <span class="block font-medium text-xs text-[#171717]">Benzyna</span>
+                  <span class="block text-[10px] text-[#8f8f8f]">Pb 95 / 98</span>
+                </label>
+                <label class="cursor-pointer border border-[#ebebeb] rounded-md p-2.5 text-center transition-all bg-white hover:border-[#171717] has-[:checked]:border-[#0070f3] has-[:checked]:bg-[#d3e5ff]/20">
+                  <input type="radio" name="fuelType" value="on" class="sr-only" />
+                  <span class="block font-medium text-xs text-[#171717]">Diesel</span>
+                  <span class="block text-[10px] text-[#8f8f8f]">ON</span>
+                </label>
+                <label class="cursor-pointer border border-[#ebebeb] rounded-md p-2.5 text-center transition-all bg-white hover:border-[#171717] has-[:checked]:border-[#0070f3] has-[:checked]:bg-[#d3e5ff]/20">
+                  <input type="radio" name="fuelType" value="lpg" class="sr-only" />
+                  <span class="block font-medium text-xs text-[#171717]">LPG</span>
+                  <span class="block text-[10px] text-[#8f8f8f]">Autogaz</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Input 2: Distance -->
+            <div>
+              <label id="label-distance" for="input-distance" class="block text-xs font-semibold text-[#171717] mb-1">
+                Przejechany dystans (km)
+              </label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  id="input-distance" 
+                  value="450" 
+                  min="0.1" 
+                  step="0.1"
+                  placeholder="np. 450"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] focus:ring-1 focus:ring-[#0070f3] bg-white transition-colors"
+                />
+                <span class="absolute right-3 top-2.5 text-xs text-[#8f8f8f] pointer-events-none">km</span>
+              </div>
+            </div>
+
+            <!-- Input 3: Fuel Consumed / Refuelled -->
+            <div>
+              <label id="label-fuel-amount" for="input-fuel-amount" class="block text-xs font-semibold text-[#171717] mb-1">
+                Ilość zużytego paliwa (litry)
+              </label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  id="input-fuel-amount" 
+                  value="32.5" 
+                  min="0.1" 
+                  step="0.1"
+                  placeholder="np. 32.5"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] focus:ring-1 focus:ring-[#0070f3] bg-white transition-colors"
+                />
+                <span class="absolute right-3 top-2.5 text-xs text-[#8f8f8f] pointer-events-none">l</span>
+              </div>
+            </div>
+
+            <!-- Input 4: Price per Litre -->
+            <div>
+              <label for="input-fuel-price" class="block text-xs font-semibold text-[#171717] mb-1">
+                Cena paliwa za 1 litr (zł)
+              </label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  id="input-fuel-price" 
+                  value="6.50" 
+                  min="0.01" 
+                  step="0.01"
+                  placeholder="np. 6.50"
+                  required
+                  class="w-full px-3.5 py-2.5 rounded-md border border-[#ebebeb] text-[#171717] text-sm focus:outline-none focus:border-[#0070f3] focus:ring-1 focus:ring-[#0070f3] bg-white transition-colors"
+                />
+                <span class="absolute right-3 top-2.5 text-xs text-[#8f8f8f] pointer-events-none">zł/l</span>
+              </div>
+            </div>
+
+            <!-- Validation Error Alert -->
+            <div id="calc-error-msg" class="hidden p-3 rounded-md bg-[#ffefcf] border border-[#f5a623] text-xs text-[#ab570a]">
+              Wprowadź poprawne wartości dodatnie dla dystansu, ilości paliwa oraz ceny.
+            </div>
+          </div>
+
+          <!-- Results Column -->
+          <div class="flex flex-col justify-between space-y-4 bg-[#fafafa] p-5 rounded-lg border border-[#ebebeb]">
+            <div>
+              <div class="flex items-center justify-between border-b border-[#ebebeb] pb-3 mb-4">
+                <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">Wynik obliczeń</span>
+                <span id="badge-fuel-type" class="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-[#171717] text-white">
+                  BENZYNA
+                </span>
+              </div>
+
+              <!-- Main Result: Average Consumption -->
+              <div class="mb-5">
+                <span class="text-xs text-[#4d4d4d] font-medium block mb-1">Średnie spalanie pojazdu</span>
+                <div class="flex items-baseline gap-2">
+                  <span id="res-avg-consumption" class="text-4xl font-semibold text-[#171717] tracking-tight font-mono">
+                    7,22
+                  </span>
+                  <span class="text-sm font-medium text-[#4d4d4d]">l / 100 km</span>
+                </div>
+              </div>
+
+              <!-- Grid of Secondary Results -->
+              <div class="grid grid-cols-2 gap-3 pt-3 border-t border-[#ebebeb]">
+                <div class="bg-white p-3 rounded-md border border-[#ebebeb]">
+                  <span class="text-[11px] text-[#8f8f8f] block">Łączny koszt</span>
+                  <span id="res-total-cost" class="text-lg font-semibold text-[#171717] font-mono block mt-0.5">
+                    211,25 zł
+                  </span>
+                </div>
+                <div class="bg-white p-3 rounded-md border border-[#ebebeb]">
+                  <span class="text-[11px] text-[#8f8f8f] block">Koszt 1 km</span>
+                  <span id="res-cost-per-km" class="text-lg font-semibold text-[#171717] font-mono block mt-0.5">
+                    0,47 zł
+                  </span>
+                </div>
+              </div>
+
+              <!-- Planned Distance Estimator -->
+              <div class="mt-5 pt-4 border-t border-[#ebebeb]">
+                <label for="input-future-dist" class="block text-xs font-semibold text-[#171717] mb-1">
+                  Prognoza na przyszłą trasę (km)
+                </label>
+                <div class="flex gap-2">
+                  <input 
+                    type="number" 
+                    id="input-future-dist" 
+                    value="300" 
+                    min="1" 
+                    step="1"
+                    class="w-1/2 px-3 py-1.5 rounded-md border border-[#ebebeb] text-[#171717] text-xs focus:outline-none focus:border-[#0070f3] bg-white font-mono"
+                  />
+                  <div class="w-1/2 bg-white px-3 py-1.5 rounded-md border border-[#ebebeb] flex items-center justify-between text-xs">
+                    <span class="text-[#8f8f8f]">Szacunek:</span>
+                    <span id="res-future-cost" class="font-semibold text-[#171717] font-mono">140,83 zł</span>
+                  </div>
+                </div>
+                <span id="res-future-fuel" class="block text-[11px] text-[#8f8f8f] mt-1 text-right">
+                  Potrzebne paliwo: ~21,7 l
+                </span>
+              </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="pt-4 border-t border-[#ebebeb] flex flex-wrap gap-2">
+              <button 
+                id="btn-copy-results" 
+                type="button" 
+                class="flex-1 min-w-[120px] px-3 py-2 rounded-md border border-[#ebebeb] bg-white text-[#171717] text-xs font-medium hover:bg-[#f2f2f2] focus:outline-none focus:ring-1 focus:ring-[#0070f3] transition-colors flex items-center justify-center gap-1.5"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span>Kopiuj wynik</span>
+              </button>
+
+              <button 
+                id="btn-reset-calc" 
+                type="button" 
+                class="px-3 py-2 rounded-md border border-[#ebebeb] bg-white text-[#4d4d4d] hover:text-[#171717] text-xs font-medium hover:bg-[#f2f2f2] focus:outline-none focus:ring-1 focus:ring-[#0070f3] transition-colors"
+                title="Resetuj dane"
+              >
+                Resetuj
+              </button>
+
+              <button 
+                id="btn-print-calc" 
+                type="button" 
+                class="px-3 py-2 rounded-md border border-[#ebebeb] bg-white text-[#4d4d4d] hover:text-[#171717] text-xs font-medium hover:bg-[#f2f2f2] focus:outline-none focus:ring-1 focus:ring-[#0070f3] transition-colors"
+                title="Drukuj podsumowanie"
+              >
+                🖨️
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // DOM Elements
+  const tab1 = document.getElementById('tab-method-1');
+  const tab2 = document.getElementById('tab-method-2');
+  const info1 = document.getElementById('method-1-info');
+  const info2 = document.getElementById('method-2-info');
+
+  const labelDist = document.getElementById('label-distance');
+  const labelFuel = document.getElementById('label-fuel-amount');
+
+  const inputDist = document.getElementById('input-distance') as HTMLInputElement;
+  const inputFuel = document.getElementById('input-fuel-amount') as HTMLInputElement;
+  const inputPrice = document.getElementById('input-fuel-price') as HTMLInputElement;
+  const inputFutureDist = document.getElementById('input-future-dist') as HTMLInputElement;
+
+  const fuelRadios = document.getElementsByName('fuelType');
+  const badgeFuel = document.getElementById('badge-fuel-type');
+
+  const resAvg = document.getElementById('res-avg-consumption');
+  const resTotal = document.getElementById('res-total-cost');
+  const resCostPerKm = document.getElementById('res-cost-per-km');
+  const resFutureCost = document.getElementById('res-future-cost');
+  const resFutureFuel = document.getElementById('res-future-fuel');
+  const errorMsg = document.getElementById('calc-error-msg');
+
+  const btnCopy = document.getElementById('btn-copy-results');
+  const btnReset = document.getElementById('btn-reset-calc');
+  const btnPrint = document.getElementById('btn-print-calc');
+
+  let currentMethod = 1;
+
+  function formatPL(num: number, decimals: number = 2): string {
+    return num.toFixed(decimals).replace('.', ',');
+  }
+
+  function getSelectedFuel(): { name: string, code: string } {
+    for (const radio of Array.from(fuelRadios) as HTMLInputElement[]) {
+      if (radio.checked) {
+        switch (radio.value) {
+          case 'on': return { name: 'DIESEL (ON)', code: 'on' };
+          case 'lpg': return { name: 'LPG', code: 'lpg' };
+          default: return { name: 'BENZYNA (PB)', code: 'pb' };
+        }
+      }
+    }
+    return { name: 'BENZYNA (PB)', code: 'pb' };
+  }
+
+  function calculate() {
+    const dist = parseFloat(inputDist.value);
+    const fuel = parseFloat(inputFuel.value);
+    const price = parseFloat(inputPrice.value);
+    const futureDist = parseFloat(inputFutureDist.value) || 0;
+
+    if (isNaN(dist) || dist <= 0 || isNaN(fuel) || fuel <= 0 || isNaN(price) || price <= 0) {
+      if (errorMsg) errorMsg.classList.remove('hidden');
+      if (resAvg) resAvg.textContent = '—';
+      if (resTotal) resTotal.textContent = '— zł';
+      if (resCostPerKm) resCostPerKm.textContent = '— zł';
+      if (resFutureCost) resFutureCost.textContent = '— zł';
+      if (resFutureFuel) resFutureFuel.textContent = 'Potrzebne paliwo: — l';
+      return;
+    }
+
+    if (errorMsg) errorMsg.classList.add('hidden');
+
+    // Calculations
+    const avgConsumption = (fuel / dist) * 100;
+    const totalCost = fuel * price;
+    const costPerKm = totalCost / dist;
+
+    const futureFuel = (futureDist * avgConsumption) / 100;
+    const futureCost = futureFuel * price;
+
+    // Display updates
+    if (resAvg) resAvg.textContent = formatPL(avgConsumption, 2);
+    if (resTotal) resTotal.textContent = `${formatPL(totalCost, 2)} zł`;
+    if (resCostPerKm) resCostPerKm.textContent = `${formatPL(costPerKm, 2)} zł`;
+
+    if (resFutureCost) resFutureCost.textContent = `${formatPL(futureCost, 2)} zł`;
+    if (resFutureFuel) resFutureFuel.textContent = `Potrzebne paliwo: ~${formatPL(futureFuel, 1)} l`;
+
+    const fuelInfo = getSelectedFuel();
+    if (badgeFuel) badgeFuel.textContent = fuelInfo.name;
+  }
+
+  // Tab Switching Logic
+  if (tab1 && tab2 && info1 && info2) {
+    tab1.addEventListener('click', () => {
+      currentMethod = 1;
+      tab1.setAttribute('aria-selected', 'true');
+      tab2.setAttribute('aria-selected', 'false');
+      tab1.className = 'calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all bg-white text-[#171717] shadow-2xs';
+      tab2.className = 'calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all text-[#4d4d4d] hover:text-[#171717]';
+      
+      info1.classList.remove('hidden');
+      info2.classList.add('hidden');
+
+      if (labelDist) labelDist.textContent = 'Przejechany dystans (km)';
+      if (labelFuel) labelFuel.textContent = 'Ilość zużytego paliwa (litry)';
+    });
+
+    tab2.addEventListener('click', () => {
+      currentMethod = 2;
+      tab2.setAttribute('aria-selected', 'true');
+      tab1.setAttribute('aria-selected', 'false');
+      tab2.className = 'calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all bg-white text-[#171717] shadow-2xs';
+      tab1.className = 'calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all text-[#4d4d4d] hover:text-[#171717]';
+
+      info2.classList.remove('hidden');
+      info1.classList.add('hidden');
+
+      if (labelDist) labelDist.textContent = 'Dystans od tankowania do pełna (km)';
+      if (labelFuel) labelFuel.textContent = 'Litry wlane do ponownego pełna (l)';
+    });
+  }
+
+  // Event Listeners for Reactive Updates
+  [inputDist, inputFuel, inputPrice, inputFutureDist].forEach(input => {
+    if (input) input.addEventListener('input', calculate);
+  });
+
+  Array.from(fuelRadios).forEach(radio => {
+    radio.addEventListener('change', calculate);
+  });
+
+  // Action Buttons
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      inputDist.value = '450';
+      inputFuel.value = '32.5';
+      inputPrice.value = '6.50';
+      inputFutureDist.value = '300';
+      (fuelRadios[0] as HTMLInputElement).checked = true;
+      calculate();
+    });
+  }
+
+  if (btnCopy) {
+    btnCopy.addEventListener('click', () => {
+      const avg = resAvg?.textContent || '';
+      const total = resTotal?.textContent || '';
+      const perKm = resCostPerKm?.textContent || '';
+      const fuel = getSelectedFuel().name;
+
+      const textToCopy = `Wynik spalania (${fuel}):\n- Średnie spalanie: ${avg} l/100 km\n- Koszt całkowity: ${total}\n- Koszt za 1 km: ${perKm}\nWyliczone na kalkulatorspalaniapaliwa.com`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const origText = btnCopy.innerHTML;
+        btnCopy.innerHTML = `<span class="text-[#0070f3] font-medium">✓ Skopiowano!</span>`;
+        setTimeout(() => {
+          btnCopy.innerHTML = origText;
+        }, 2000);
+      });
+    });
+  }
+
+  if (btnPrint) {
+    btnPrint.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Initial calculation on load
+  calculate();
+</script>

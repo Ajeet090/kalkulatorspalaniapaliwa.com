@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "O Nas – Kalkulator spalania paliwa i kosztów trasy";
+const pageDescription = "Dowiedz się więcej o naszej misji tworzenia precyzyjnych, bezpłatnych narzędzi dla kierowców do obliczania zużycia paliwa i planowania tras w Polsce.";
+const canonicalUrl = "https://kalkulatorspalaniapaliwa.com/o-nas";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl}>
+  <Navbar />
+
+  <main class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Header -->
+      <div class="text-center space-y-3">
+        <span class="font-mono text-xs uppercase tracking-wider text-[#8f8f8f]">O Projekcie</span>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#171717]">
+          O nas i naszej misji
+        </h1>
+        <p class="text-sm text-[#4d4d4d] max-w-xl mx-auto">
+          Poznaj niezależny kalkulator paliwowy stworzony z myślą o polskich kierowcach.
+        </p>
+      </div>
+
+      <!-- Content Container -->
+      <div class="geist-hairline-card p-6 sm:p-10 rounded-xl bg-white space-y-6 text-sm sm:text-base leading-relaxed text-[#4d4d4d]">
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#171717] tracking-tight">Kim jesteśmy?</h2>
+          <p>
+            Serwis <strong class="text-[#171717]">kalkulatorspalaniapaliwa.com</strong> to niezależne, cyfrowe narzędzie narzędziowe zaprojektowane dla każdego kierowcy, który chce świadomie zarządzać wydatkami na paliwo w swoim samochodzie.
+          </p>
+          <p>
+            Naszą misją jest dostarczanie maksymalnie precyzyjnych, przejrzystych i bezpłatnych kalkulatorów online, które pomagają błyskawicznie obliczyć średnie zużycie paliwa na 100 km, ustalić koszty planowanych podróży oraz porównać wydatki przy jeździe na benzynie, oleju napędowym (diesel) lub autogazie LPG.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#171717] tracking-tight">Dlaczego stworzyliśmy to narzędzie?</h2>
+          <p>
+            Wielu kierowców boryka się z niedokładnymi wskazaniami komputerów pokładowych w samochodach oraz skomplikowanymi wzorami matematycznymi. Stworzyliśmy kalkulator, który eliminuje zgadywanie i pozwala w kilkanaście sekund uzyskać dokładne wyniki bez reklam, zbędnych rejestracji i pobierania skomplikowanych aplikacji na telefon.
+          </p>
+        </section>
+
+        <!-- Highlights Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-center space-y-1">
+            <span class="text-2xl block">⚡</span>
+            <strong class="text-sm text-[#171717] block font-semibold">100% Szybkość</strong>
+            <span class="text-xs text-[#8f8f8f]">Obliczenia natychmiastowe w przeglądarce.</span>
+          </div>
+
+          <div class="p-4 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-center space-y-1">
+            <span class="text-2xl block">🔒</span>
+            <strong class="text-sm text-[#171717] block font-semibold">Prywatność</strong>
+            <span class="text-xs text-[#8f8f8f]">Brak zbierania danych osobowych.</span>
+          </div>
+
+          <div class="p-4 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-center space-y-1">
+            <span class="text-2xl block">📐</span>
+            <strong class="text-sm text-[#171717] block font-semibold">Precyzja</strong>
+            <span class="text-xs text-[#8f8f8f]">Fizyczne wzory matematyczne.</span>
+          </div>
+        </div>
+
+        <section class="space-y-3 pt-2">
+          <h2 class="text-xl font-semibold text-[#171717] tracking-tight">Kontakt i rozwój serwisu</h2>
+          <p>
+            Nieustannie rozwijamy serwis o nowe funkcje, takie jak przeliczniki jednostek z rynku USA/UK oraz zaawansowane moduły podziału kosztów podróży ze współpasażerami. Jeśli masz pomysł na nową funkcję lub chcesz przekazać nam swoją opinię, przejdź do strony <a href="/kontakt" class="text-[#0070f3] hover:underline font-medium">Kontakt</a>.
+          </p>
+        </section>
+      </div>
+
+      <!-- Navigation Link Back -->
+      <div class="text-center pt-4">
+        <a href="/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#171717] text-white text-xs font-medium hover:bg-[#333333] transition-colors">
+          ← Powrót do strony głównej
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

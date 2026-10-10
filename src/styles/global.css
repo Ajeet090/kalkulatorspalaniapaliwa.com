@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #171717;
+  --color-on-primary: #ffffff;
+  --color-ink: #171717;
+  --color-body: #4d4d4d;
+  --color-mute: #8f8f8f;
+  --color-faint: #a1a1a1;
+  --color-hairline: #ebebeb;
+  --color-hairline-soft: #f2f2f2;
+  --color-canvas: #fafafa;
+  --color-canvas-elevated: #ffffff;
+  --color-link: #0070f3;
+  --color-link-deep: #0761d1;
+  --color-link-soft: #d3e5ff;
+  --color-error: #ee0000;
+  --color-error-deep: #c50000;
+  --color-warning: #f5a623;
+  --color-warning-soft: #ffefcf;
+  --color-warning-deep: #ab570a;
+  --color-violet: #7928ca;
+  --color-cyan: #50e3c2;
+  --color-pink: #ff0080;
+  --color-magenta: #eb367f;
+
+  --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #fafafa;
+    color: #171717;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Geist Mesh Hero Background */
+.geist-mesh-bg {
+  background-image: 
+    radial-gradient(at 20% 20%, rgba(80, 227, 194, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(0, 112, 243, 0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(121, 40, 202, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(235, 54, 127, 0.1) 0px, transparent 50%),
+    radial-gradient(at 10% 80%, rgba(245, 166, 35, 0.1) 0px, transparent 50%);
+}
+
+.geist-hairline-card {
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.geist-hairline-card:hover {
+  border-color: #d4d4d4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Display tight tracking from Geist spec */
+.tracking-tight-display {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight-heading {
+  letter-spacing: -0.03em;
+}
