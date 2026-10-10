@@ -23,7 +23,7 @@
           type="button"
           role="tab"
           aria-selected="true"
-          aria-controls="panel-method-1"
+          aria-controls="method-1-info"
           class="calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all bg-white text-[#171717] shadow-2xs"
         >
           1. Na podstawie zużytego paliwa
@@ -33,7 +33,7 @@
           type="button"
           role="tab"
           aria-selected="false"
-          aria-controls="panel-method-2"
+          aria-controls="method-2-info"
           class="calc-tab-btn flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all text-[#4d4d4d] hover:text-[#171717]"
         >
           2. Metoda tankowania do pełna
@@ -41,12 +41,12 @@
       </div>
 
       <!-- Tab 1 Explanation -->
-      <div id="method-1-info" class="mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
+      <div id="method-1-info" role="tabpanel" aria-labelledby="tab-method-1" class="mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
         <strong class="text-[#171717]">Metoda standardowa:</strong> Oblicz zużycie paliwa na podstawie podanego dystansu oraz całkowitej ilości spalonego paliwa.
       </div>
 
       <!-- Tab 2 Explanation (Hidden by default) -->
-      <div id="method-2-info" class="hidden mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
+      <div id="method-2-info" role="tabpanel" aria-labelledby="tab-method-2" class="hidden mb-6 p-3.5 rounded-lg bg-[#fafafa] border border-[#ebebeb] text-xs text-[#4d4d4d]">
         <strong class="text-[#171717]">Metoda tankowania do pełna (Najdokładniejsza):</strong> Zatankuj do pełna, wyzeruj licznik. Po przejechaniu trasy ponów tankowanie do pełna. Wpisz dystans z licznika i litry z dystrybutora.
       </div>
 
